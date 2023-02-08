@@ -1,4 +1,4 @@
-package com.dtos;
+package fr.dtos;
 
 import lombok.Data;
 
