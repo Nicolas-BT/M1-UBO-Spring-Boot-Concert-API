@@ -6,19 +6,29 @@ import lombok.Data;
 
 import java.sql.Date;
 import java.sql.Time;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Data
 public class T_CONCERT {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long con_id;
-    private String con_nom;
-    private Date con_date;
-    private Time con_heure;
-    private Time con_duree;
+    @Column(name = "con_id")
+    private Integer id;
+    @Column(name = "con_nom")
+    private String nom;
+    @Column(name = "con_date")
+    private LocalDate date;
+    @Column(name = "con_heure")
+    private LocalTime heure;
+    @Column(name = "con_duree")
+    private Duration duree;
     @ManyToOne
-    private T_GROUPE grp_id;
+    @JoinColumn(name = "T_GROUPE_grp_id")
+    private T_GROUPE groupe;
     @ManyToOne
-    private T_SOIREE soi_id;
+    @JoinColumn(name = "T_SOIREE_soi_id")
+    private T_SOIREE soiree;
 }

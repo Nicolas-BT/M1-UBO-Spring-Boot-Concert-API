@@ -1,9 +1,6 @@
 package fr.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.Data;
 
@@ -12,10 +9,16 @@ import lombok.Data;
 public class T_SALLECONCERT {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long sac_id;
-    private String sac_nom;
-    private String sac_adresse;
-    private long sac_capacite;
-    private String sac_ges_nom;
-    private String sac_ges_association;
+    @Column(name = "sac_id")
+    private Integer id;
+    @Column(name = "sac_nom")
+    private String nom;
+    @Column(name = "sac_adresse")
+    private String adresse;
+    @Column(name = "sac_capacite")
+    private Integer capacite;
+    @Column(name = "sac_ges_nom")
+    private String ges_nom;
+    @Column(name = "sac_ges_association")
+    private String ges_association;
 }
