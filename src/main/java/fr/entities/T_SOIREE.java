@@ -9,8 +9,13 @@ import lombok.Data;
 public class T_SOIREE {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long soi_id;
-    private String soi_nom;
+    @Column(name = "soi_id")
+    private Integer id;
+    @Column(name = "soi_nom")
+    private String nom;
     @ManyToOne
-    private T_SALLECONCERT sac_id;
+    @JoinColumn(name = "T_SALLECONCERT_sac_id")
+    private T_SALLECONCERT salleconcert;
+
+
 }
