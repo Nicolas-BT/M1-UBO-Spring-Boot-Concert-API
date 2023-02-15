@@ -1,9 +1,9 @@
-package com.controllers;
+package fr.controllers;
 
-import com.dtos.DogDto;
+import fr.dtos.DogDto;
 import org.springframework.web.bind.annotation.*;
 
-import com.services.impl.DogServiceImpl;
+import fr.services.impl.DogServiceImpl;
 
 import java.util.List;
 
