@@ -1,6 +1,10 @@
 package fr.entities;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Column;
 
 import lombok.Data;
 
@@ -9,9 +13,9 @@ import lombok.Data;
 public class T_GROUPE {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "grp_id")
-    private Integer id;      // Id du groupe
+    private Integer grp_id;      // Id du groupe
     @Column(name = "grp_nom")
-    private String nom;   // Nom de/s l'artiste/s (séparés par des ',')
+    private String grp_nom;   // Nom de/s l'artiste/s (séparés par des ',')
     @Column(name = "grp_prenom")
     private String prenom;// Prenom de/s l'artiste/s (séparés par des ',')
     @Column(name = "grp_pseudo")
