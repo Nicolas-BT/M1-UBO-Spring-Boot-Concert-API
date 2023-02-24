@@ -15,6 +15,7 @@ public class DogServiceImpl implements DogService {
 
 	private final DogRepository dogRepository;
 
+
     public DogServiceImpl(DogRepository dogRepository){
         this.dogRepository = dogRepository;
     }

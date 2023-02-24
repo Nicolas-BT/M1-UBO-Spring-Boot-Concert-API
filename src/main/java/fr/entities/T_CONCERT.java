@@ -4,17 +4,17 @@ import javax.persistence.*;
 
 import lombok.Data;
 
-import java.sql.Date;
-import java.sql.Time;
+
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Entity
 @Data
 public class T_CONCERT {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "con_id")
     private Integer id;
     @Column(name = "con_nom")
