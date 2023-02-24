@@ -10,7 +10,7 @@ public class T_SOIREE {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "soi_id")
-    private Integer id;
+    private Integer soi_id;
     @Column(name = "soi_nom")
     private String nom;
     @ManyToOne
