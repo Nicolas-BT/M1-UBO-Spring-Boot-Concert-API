@@ -3,7 +3,7 @@ import lombok.Data;
 
 @Data
 public class T_SALLECONCERTDto {
-    private Integer id;
+    private Integer sac_id;
     private String nom;
     private String adresse;
     private Integer capacite;

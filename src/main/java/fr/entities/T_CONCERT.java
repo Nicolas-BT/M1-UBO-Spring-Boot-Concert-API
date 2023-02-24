@@ -16,7 +16,7 @@ import javax.persistence.GenerationType;
 public class T_CONCERT {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "con_id")
-    private Integer id;
+    private Integer con_id;
     @Column(name = "con_nom")
     private String nom;
     @Column(name = "con_date")

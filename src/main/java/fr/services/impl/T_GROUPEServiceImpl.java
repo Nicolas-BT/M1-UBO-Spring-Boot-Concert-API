@@ -28,18 +28,18 @@ public class T_GROUPEServiceImpl implements T_GROUPEService {
     @Override
     public T_GROUPEDto savegroupe(T_GROUPEDto tGroupeDto) {
         // Converts the dto to the T_GROUPE entity
-        T_GROUPE tGroupe = toEntity((tGroupeDto));
+        T_GROUPE tGroupe = tGroupeMapper.toEntity((tGroupeDto));
         // Save the T_GROUPE entity
         tGroupe = tGroupeRepository.save(tGroupe);
         //return the new Dto
-        return toDo(tGroupe);
+        return tGroupeMapper.toDo(tGroupe);
     }
 
     @Override
     public T_GROUPEDto getGroupeById(Integer GroupeId) {
         T_GROUPE tGroupe = tGroupeRepository.findById(GroupeId).orElseThrow(() -> new EntityNotFoundException("T_GROUPE not found"));
         //return the new Dto
-        return toDo(tGroupe);
+        return tGroupeMapper.toDo(tGroupe);
     }
 
     @Override
@@ -53,12 +53,12 @@ public class T_GROUPEServiceImpl implements T_GROUPEService {
         List<T_GROUPEDto> tGroupeDtos = new ArrayList<>();
         List<T_GROUPE> tGroupes = tGroupeRepository.findAll();
         tGroupes.forEach(T_GROUPE -> {
-            tGroupeDtos.add(toDo(T_GROUPE));
+            tGroupeDtos.add(tGroupeMapper.toDo(T_GROUPE));
         });
         return tGroupeDtos;
     }
 
-
+    /*
     private T_GROUPEDto toDo(T_GROUPE groupe){
         T_GROUPEDto tGroupeDto = new T_GROUPEDto();
         tGroupeDto.setGrp_id(groupe.getGrp_id());
@@ -67,6 +67,7 @@ public class T_GROUPEServiceImpl implements T_GROUPEService {
         tGroupeDto.setPseudo(groupe.getPseudo());
         tGroupeDto.setAge(groupe.getAge());
         tGroupeDto.setVille(groupe.getVille());
+        tGroupeDto.setNb(groupe.getNb());
         return tGroupeDto;
     }
 
@@ -79,8 +80,10 @@ public class T_GROUPEServiceImpl implements T_GROUPEService {
         tGroupe.setPseudo(groupeDto.getPseudo());
         tGroupe.setAge(groupeDto.getAge());
         tGroupe.setVille(groupeDto.getVille());
+        tGroupe.setNb(groupeDto.getNb());
         return tGroupe;
 
     }
+     */
 
 }

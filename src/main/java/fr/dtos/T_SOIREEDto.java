@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class T_SOIREEDto {
-    private Integer id;
+    private Integer soi_id;
     private String nom;
-    private T_SALLECONCERT salleConcertId;
+    private T_SALLECONCERT salleconcert;
 }

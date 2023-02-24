@@ -11,11 +11,11 @@ import java.time.LocalTime;
 
 @Data
 public class T_CONCERTDto {
-    private Integer id;
+    private Integer con_id;
     private String nom;
     private LocalDate date;
     private LocalTime heure;
     private Duration duree;
-    private T_GROUPE groupeId;
-    private T_SOIREE soireeId;
+    private T_GROUPE groupe;
+    private T_SOIREE soiree;
 }
