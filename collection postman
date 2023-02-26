@@ -1,0 +1,135 @@
+{
+	"info": {
+		"_postman_id": "4c3de60d-bf60-49e8-a7b2-ce0bf9ed5164",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25722129"
+	},
+	"item": [
+		{
+			"name": "recherche concert avec id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tconcerts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tconcerts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recherche tout les concerts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tconcerts/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tconcerts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recherche toutes les soiree",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tsoiree",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tsoiree"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "recherche toutes les groupes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tgroupes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tgroupes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ajouter un concert",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "    {\r\n        \"nom\": \"Concert de rock\",\r\n        \"date\": \"2023-03-15\",\r\n        \"heure\": \"22:30:00\",\r\n        \"duree\": \"01:00:00\",\r\n        \"groupe\": {\r\n            \"grp_id\": 1,\r\n            \"grp_nom\": \"Les Beatles\",\r\n            \"prenom\": \"John\",\r\n            \"pseudo\": \"Lennon\",\r\n            \"ville\": \"Liverpool\",\r\n            \"age\": \"30\",\r\n            \"nb\": \"4\"\r\n        },\r\n        \"soiree\": {\r\n            \"soi_id\": 1,\r\n            \"nom\": \"Concert des Beatles\",\r\n            \"salleconcert\": {\r\n                \"sac_id\": 1,\r\n                \"nom\": \"Le Zénith\",\r\n                \"adresse\": \"211 Avenue Jean Jaurès, 75019 Paris\",\r\n                \"capacite\": 6000,\r\n                \"ges_nom\": \"Live Nation\",\r\n                \"ges_association\": \"Association pour la gestion de la salle de concerts\"\r\n            }\r\n        }\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/tconcerts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tconcerts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "supprimer un concert avec id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/tconcerts/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tconcerts",
+						"6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

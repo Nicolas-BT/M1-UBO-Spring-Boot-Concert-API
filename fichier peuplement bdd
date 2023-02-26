@@ -1,0 +1,28 @@
+-- Ajout de données pour la table T_GROUPE
+INSERT INTO T_GROUPE (grp_id, grp_nom, grp_prenom, grp_pseudo, grp_ville, grp_age, grp_nb) VALUES
+(1, 'Les Beatles', 'John', 'Lennon', 'Liverpool', '30', '4'),
+(2, 'Les Rolling Stones', 'Mick', 'Jagger', 'Londres', '29', '5'),
+(3, 'Led Zeppelin', 'Robert', 'Plant', 'Birmingham', '28', '3'),
+(4, 'Pink Floyd', 'David', 'Gilmour', 'Cambridge', '32', '4'),
+(5, 'Queen', 'Freddie', 'Mercury', 'Stone Town', '35', '3');
+
+-- Ajout de données pour la table T_SALLECONCERT
+INSERT INTO T_SALLECONCERT (sac_id, sac_nom, sac_adresse, sac_capacite, sac_ges_nom, sac_ges_association) VALUES
+(1, 'Le Zénith', '211 Avenue Jean Jaurès, 75019 Paris', 6000, 'Live Nation', 'Association pour la gestion de la salle de concerts'),
+(2, 'L''Olympia', '28 Boulevard des Capucines, 75009 Paris', 2000, 'Bruno Coquatrix', 'Association des Amis de l''Olympia');
+
+-- Ajout de données pour la table T_SOIREE
+INSERT INTO T_SOIREE (soi_id, soi_nom, T_SALLECONCERT_sac_id) VALUES
+(1, 'Concert des Beatles', 1),
+(2, 'Concert des Rolling Stones', 1),
+(3, 'Concert de Led Zeppelin', 2),
+(4, 'Concert de Pink Floyd', 2),
+(5, 'Concert de Queen', 1);
+
+-- Ajout de données pour la table T_CONCERT
+INSERT INTO T_CONCERT (con_id, con_nom, con_date, con_heure, con_duree, T_GROUPE_grp_id, T_SOIREE_soi_id) VALUES
+(1, 'Concert des Beatles à Paris', '2023-03-15', '20:00:00', '02:00:00', 1, 1),
+(2, 'Concert des Rolling Stones à Paris', '2023-03-18', '21:00:00', '03:00:00', 2, 2),
+(3, 'Concert de Led Zeppelin à l''Olympia', '2023-03-21', '20:30:00', '02:30:00', 3, 3),
+(4, 'Concert de Pink Floyd à l''Olympia', '2023-03-25', '21:30:00', '03:30:00', 4, 4),
+(5, 'Concert de Queen à Paris', '2023-03-28', '20:00:00', '02:00:00', 5, 5);
