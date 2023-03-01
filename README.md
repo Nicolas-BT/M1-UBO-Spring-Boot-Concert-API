@@ -12,14 +12,14 @@ Dans le fichier **application.propertites**, modifier les identifiants et url du
 En utilisant les votres donc celui de l'université ou WAMP tel que :
 
 ##### Exemple pour université:
-```mysql
+```
 spring.datasource.url=jdbc:mysql://obiwan.univ-brest.fr/zfm1-zjeanbon_2
 spring.datasource.username=zjeanbon
 spring.datasource.password=monMotDePasse
 ```
 
 ##### Exemple pour WAMP
-```mysql
+```
 spring.datasource.url=jdbc:mysql://localhost:3306/maBase
 spring.datasource.username=root
 spring.datasource.password=
@@ -42,14 +42,34 @@ Exemple de POST :
 
 [POST] - URL : http://localhost:8080/tconcerts
 ```
-data :{
-  "nom" : "Les Beatles"
-  "date" : "12-05-2023"
-  "heure" : "14:30:00"
-  "duree" : "PT0.0000000044S"
-  "groupeID" :{...}
-  "soireeID" :{...}
-}
+data :
+    {
+        "nom": "Concert de rock",
+        "date": "2023-03-15",
+        "heure": "22:30:00",
+        "duree": "01:00:00",
+        "groupe": {
+            "grp_id": 1,
+            "grp_nom": "Les Beatles",
+            "prenom": "John",
+            "pseudo": "Lennon",
+            "ville": "Liverpool",
+            "age": "30",
+            "nb": "4"
+        },
+        "soiree": {
+            "soi_id": 1,
+            "nom": "Concert des Beatles",
+            "salleconcert": {
+                "sac_id": 1,
+                "nom": "Le Zénith",
+                "adresse": "211 Avenue Jean Jaurès, 75019 Paris",
+                "capacite": 6000,
+                "ges_nom": "Live Nation",
+                "ges_association": "Association pour la gestion de la salle de concerts"
+            }
+        }
+    }
 ```
 > Renvoie le concert crée si le concert + son id à bien été ajouté, sinon une erreur
 

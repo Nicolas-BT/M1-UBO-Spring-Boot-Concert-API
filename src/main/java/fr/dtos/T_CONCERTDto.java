@@ -15,7 +15,7 @@ public class T_CONCERTDto {
     private String nom;
     private LocalDate date;
     private LocalTime heure;
-    private Duration duree;
+    private LocalTime duree;
     private T_GROUPE groupe;
     private T_SOIREE soiree;
 }

@@ -24,7 +24,7 @@ public class T_CONCERT {
     @Column(name = "con_heure")
     private LocalTime heure;
     @Column(name = "con_duree")
-    private Duration duree;
+    private LocalTime duree;
     @ManyToOne
     @JoinColumn(name = "T_GROUPE_grp_id")
     private T_GROUPE groupe;
