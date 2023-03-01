@@ -8,11 +8,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/tsalleconcert")
-public class T_SALLECONCERTController {
+public class SalleConcertController {
 
     private final SalleConcertService tSalleconcertService;
 
-    public T_SALLECONCERTController(SalleConcertService tSalleconcertService) {
+    public SalleConcertController(SalleConcertService tSalleconcertService) {
         this.tSalleconcertService = tSalleconcertService;
     }
 
