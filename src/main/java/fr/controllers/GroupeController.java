@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/tgroupes")
-public class T_GROUPEController {
+public class GroupeController {
 
     private final GroupeServiceImpl tGroupeService;
 
-    public T_GROUPEController(GroupeServiceImpl tGroupeService) {
+    public GroupeController(GroupeServiceImpl tGroupeService) {
         this.tGroupeService = tGroupeService;
     }
 
