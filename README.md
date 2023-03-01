@@ -27,8 +27,14 @@ spring.datasource.password=
 ### II - Lancer l'application et l'utiliser
 Il suffit de lancer l'application **App**
 
+### Erreur possible lors du premier lancement 
+Il est possible que lors du premier lancement des erreurs s'affiche, cela peux etre 2 erreurs:
+-la première : vous n'avez pas modifier application.properties ( et le serveur n'arrive pas à ce connecter)
+-la seconde : mettre en commentaires les @Mappings dans tous les mapper, relancer, arreter et enlever les commentaires des @Mapping et lancer ! 
+
 Ensuite, vous pouvez utiliser Postman afin de faire les commandes GET / POST / DELETE en localhost sur le port 8080
 Exemples de GET :
+
 
 [GET] - URL : http://localhost:8080/tconcerts
 
