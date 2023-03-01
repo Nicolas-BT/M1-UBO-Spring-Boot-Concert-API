@@ -1,8 +1,7 @@
 package fr.controllers;
 
-import fr.dtos.T_SALLECONCERTDto;
-import fr.dtos.T_SOIREEDto;
-import fr.services.T_SOIREEService;
+import fr.dtos.SoireeDto;
+import fr.services.SoireeService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,9 +10,9 @@ import java.util.List;
 @RequestMapping("/tsoiree")
 public class T_SOIREEController {
 
-    private final T_SOIREEService tSoireeService;
+    private final SoireeService tSoireeService;
 
-    public T_SOIREEController(T_SOIREEService tSoireeService) {
+    public T_SOIREEController(SoireeService tSoireeService) {
         this.tSoireeService = tSoireeService;
     }
 
@@ -22,7 +21,7 @@ public class T_SOIREEController {
      * @return List<T_SOIREEDto>
      */
     @GetMapping
-    public List<T_SOIREEDto> getSoirees() {
+    public List<SoireeDto> getSoirees() {
         return tSoireeService.getAllSoirees();
     }
 
@@ -30,7 +29,7 @@ public class T_SOIREEController {
      * Method to get the t_soiree based on the ID
      */
     @GetMapping("/{id}")
-    public T_SOIREEDto getSoiree(@PathVariable Integer id){
+    public SoireeDto getSoiree(@PathVariable Integer id){
         return tSoireeService.getSoireeById(id) ;
     }
 
@@ -38,7 +37,7 @@ public class T_SOIREEController {
      * Create a new t_soiree in the system
      */
     @PostMapping
-    public T_SOIREEDto saveSoiree(final @RequestBody T_SOIREEDto tSoireeDto){
+    public SoireeDto saveSoiree(final @RequestBody SoireeDto tSoireeDto){
         return tSoireeService.saveSoiree(tSoireeDto);
     }
 

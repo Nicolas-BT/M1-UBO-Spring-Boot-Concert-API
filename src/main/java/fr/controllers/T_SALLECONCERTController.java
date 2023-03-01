@@ -1,7 +1,7 @@
 package fr.controllers;
 
-import fr.dtos.T_SALLECONCERTDto;
-import fr.services.T_SALLECONCERTService;
+import fr.dtos.SalleConcertDto;
+import fr.services.SalleConcertService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,9 +10,9 @@ import java.util.List;
 @RequestMapping("/tsalleconcert")
 public class T_SALLECONCERTController {
 
-    private final T_SALLECONCERTService tSalleconcertService;
+    private final SalleConcertService tSalleconcertService;
 
-    public T_SALLECONCERTController(T_SALLECONCERTService tSalleconcertService) {
+    public T_SALLECONCERTController(SalleConcertService tSalleconcertService) {
         this.tSalleconcertService = tSalleconcertService;
     }
 
@@ -21,7 +21,7 @@ public class T_SALLECONCERTController {
      * @return List<T_SALLECONCERTDto>
      */
     @GetMapping
-    public List<T_SALLECONCERTDto> getsallesconcert() {
+    public List<SalleConcertDto> getsallesconcert() {
         return tSalleconcertService.getAllSalleConcerts();
     }
 
@@ -29,7 +29,7 @@ public class T_SALLECONCERTController {
      * Method to get the t_salleconcert based on the ID
      */
     @GetMapping("/{id}")
-    public T_SALLECONCERTDto getsalleconcert(@PathVariable Integer id){
+    public SalleConcertDto getsalleconcert(@PathVariable Integer id){
         return tSalleconcertService.getSalleConcertById(id) ;
     }
 
@@ -37,7 +37,7 @@ public class T_SALLECONCERTController {
      * Create a new t_salleconcert in the system
      */
     @PostMapping
-    public T_SALLECONCERTDto savesalleconcert(final @RequestBody T_SALLECONCERTDto tSalleconcertDto){
+    public SalleConcertDto savesalleconcert(final @RequestBody SalleConcertDto tSalleconcertDto){
         return tSalleconcertService.saveSalleConcert(tSalleconcertDto);
     }
 

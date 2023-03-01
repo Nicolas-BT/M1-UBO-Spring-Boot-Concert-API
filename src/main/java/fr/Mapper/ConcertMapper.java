@@ -1,22 +1,21 @@
 package fr.Mapper;
 
-import fr.dtos.T_CONCERTDto;
-import fr.entities.T_CONCERT;
+import fr.dtos.ConcertDto;
+import fr.entities.Concert;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
+
 
 @Mapper(
         componentModel = "spring"
 )
-public interface T_CONCERTMapper {
-    @Mapping(source = "con_id", target = "con_id")
+public interface ConcertMapper {
+    @Mapping(source = "conId", target = "conId")
     @Mapping(source = "groupe", target = "groupe")
     @Mapping(source = "soiree", target = "soiree")
-
-    T_CONCERTDto toDo(T_CONCERT concert);
-    @Mapping(source = "con_id", target = "con_id")
+    ConcertDto ConcertEntityToDto(Concert concert);
+    @Mapping(source = "conId", target = "conId")
     @Mapping(source = "groupe", target = "groupe")
     @Mapping(source = "soiree", target = "soiree")
-    T_CONCERT toEntity(T_CONCERTDto concertDto);
+    Concert ConcertDtoToEntity(ConcertDto concertDto);
 }

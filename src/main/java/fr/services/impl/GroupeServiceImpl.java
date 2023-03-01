@@ -1,11 +1,11 @@
 package fr.services.impl;
 
-import fr.Mapper.T_GROUPEMapper;
+import fr.Mapper.GroupeMapper;
 
-import fr.dtos.T_GROUPEDto;
-import fr.entities.T_GROUPE;
-import fr.repositories.T_GROUPERepository;
-import fr.services.T_GROUPEService;
+import fr.dtos.GroupeDto;
+import fr.entities.Groupe;
+import fr.repositories.GroupeRepository;
+import fr.services.GroupeService;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -14,21 +14,21 @@ import java.util.List;
 
 
 @Service("T_GROUPEService")
-public class T_GROUPEServiceImpl implements T_GROUPEService {
+public class GroupeServiceImpl implements GroupeService {
 
-    private final T_GROUPERepository tGroupeRepository;
-    private  final T_GROUPEMapper tGroupeMapper;
+    private final GroupeRepository tGroupeRepository;
+    private  final GroupeMapper tGroupeMapper;
 
-    public T_GROUPEServiceImpl(T_GROUPERepository tGroupeRepository, T_GROUPEMapper tGroupeMapper) {
+    public GroupeServiceImpl(GroupeRepository tGroupeRepository, GroupeMapper tGroupeMapper) {
         this.tGroupeRepository = tGroupeRepository;
         this.tGroupeMapper = tGroupeMapper;
     }
 
 
     @Override
-    public T_GROUPEDto savegroupe(T_GROUPEDto tGroupeDto) {
+    public GroupeDto savegroupe(GroupeDto tGroupeDto) {
         // Converts the dto to the T_GROUPE entity
-        T_GROUPE tGroupe = tGroupeMapper.toEntity((tGroupeDto));
+        Groupe tGroupe = tGroupeMapper.toEntity((tGroupeDto));
         // Save the T_GROUPE entity
         tGroupe = tGroupeRepository.save(tGroupe);
         //return the new Dto
@@ -36,8 +36,8 @@ public class T_GROUPEServiceImpl implements T_GROUPEService {
     }
 
     @Override
-    public T_GROUPEDto getGroupeById(Integer GroupeId) {
-        T_GROUPE tGroupe = tGroupeRepository.findById(GroupeId).orElseThrow(() -> new EntityNotFoundException("T_GROUPE not found"));
+    public GroupeDto getGroupeById(Integer GroupeId) {
+        Groupe tGroupe = tGroupeRepository.findById(GroupeId).orElseThrow(() -> new EntityNotFoundException("T_GROUPE not found"));
         //return the new Dto
         return tGroupeMapper.toDo(tGroupe);
     }
@@ -49,9 +49,9 @@ public class T_GROUPEServiceImpl implements T_GROUPEService {
     }
 
     @Override
-    public List<T_GROUPEDto> getAllGroupes() {
-        List<T_GROUPEDto> tGroupeDtos = new ArrayList<>();
-        List<T_GROUPE> tGroupes = tGroupeRepository.findAll();
+    public List<GroupeDto> getAllGroupes() {
+        List<GroupeDto> tGroupeDtos = new ArrayList<>();
+        List<Groupe> tGroupes = tGroupeRepository.findAll();
         tGroupes.forEach(T_GROUPE -> {
             tGroupeDtos.add(tGroupeMapper.toDo(T_GROUPE));
         });

@@ -1,18 +1,18 @@
 package fr.Mapper;
 
-import fr.dtos.T_SOIREEDto;
-import fr.entities.T_SOIREE;
+import fr.dtos.SoireeDto;
+import fr.entities.Soiree;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper(
         componentModel = "spring"
 )
-public interface T_SOIREEMapper {
+public interface SoireeMapper {
     @Mapping(source = "soi_id", target = "soi_id")
     @Mapping(source = "salleconcert", target = "salleconcert")
-    T_SOIREEDto toDo(T_SOIREE soiree);
+    SoireeDto toDo(Soiree soiree);
     @Mapping(source = "soi_id", target = "soi_id")
     @Mapping(source = "salleconcert", target = "salleconcert")
-    T_SOIREE toEntity(T_SOIREEDto soireeDto);
+    Soiree toEntity(SoireeDto soireeDto);
 }

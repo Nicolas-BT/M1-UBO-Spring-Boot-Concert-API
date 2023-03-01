@@ -1,11 +1,10 @@
 package fr.services.impl;
 
-import fr.Mapper.T_SOIREEMapper;
-import fr.dtos.T_SOIREEDto;
-import fr.entities.T_CONCERT;
-import fr.entities.T_SOIREE;
-import fr.repositories.T_SOIREERepository;
-import fr.services.T_SOIREEService;
+import fr.Mapper.SoireeMapper;
+import fr.dtos.SoireeDto;
+import fr.entities.Soiree;
+import fr.repositories.SoireeRepository;
+import fr.services.SoireeService;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -13,20 +12,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service("T_SOIREEService")
-public class T_SOIREEServiceImpl implements T_SOIREEService {
+public class SoireeServiceImpl implements SoireeService {
 
-    private final T_SOIREERepository tSoireeRepository;
-    private  final T_SOIREEMapper tSoireeMapper;
+    private final SoireeRepository tSoireeRepository;
+    private  final SoireeMapper tSoireeMapper;
 
-    public T_SOIREEServiceImpl(T_SOIREERepository tSoireeRepository, T_SOIREEMapper tSoireeMapper) {
+    public SoireeServiceImpl(SoireeRepository tSoireeRepository, SoireeMapper tSoireeMapper) {
         this.tSoireeRepository = tSoireeRepository;
         this.tSoireeMapper = tSoireeMapper;
     }
 
     @Override
-    public T_SOIREEDto saveSoiree(T_SOIREEDto tSoireeDto) {
+    public SoireeDto saveSoiree(SoireeDto tSoireeDto) {
         // Converts the dto to the T_SOIREE entity
-        T_SOIREE tSoiree = tSoireeMapper.toEntity((tSoireeDto));
+        Soiree tSoiree = tSoireeMapper.toEntity((tSoireeDto));
         // Save the T_SOIREE entity
         tSoiree = tSoireeRepository.save(tSoiree);
         //return the new Dto
@@ -34,8 +33,8 @@ public class T_SOIREEServiceImpl implements T_SOIREEService {
     }
 
     @Override
-    public T_SOIREEDto getSoireeById(Integer SoireeId) {
-        T_SOIREE tSoiree = tSoireeRepository.findById(SoireeId).orElseThrow(() -> new EntityNotFoundException("T_SOIREE not found"));
+    public SoireeDto getSoireeById(Integer SoireeId) {
+        Soiree tSoiree = tSoireeRepository.findById(SoireeId).orElseThrow(() -> new EntityNotFoundException("T_SOIREE not found"));
         //return the new Dto
         return tSoireeMapper.toDo(tSoiree);
     }
@@ -47,8 +46,8 @@ public class T_SOIREEServiceImpl implements T_SOIREEService {
     }
 
     @Override
-    public List<T_SOIREEDto> getAllSoirees() {
-        List<T_SOIREE> tSoirees = tSoireeRepository.findAll();
+    public List<SoireeDto> getAllSoirees() {
+        List<Soiree> tSoirees = tSoireeRepository.findAll();
         return tSoirees.stream().map(tSoireeMapper::toDo).collect(Collectors.toList());
     }
 }
