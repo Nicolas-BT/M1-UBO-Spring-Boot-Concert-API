@@ -13,5 +13,6 @@ import org.springframework.stereotype.Component;
 public interface T_GROUPEMapper {
     @Mapping(source = "grp_id",target = "grp_id")
     T_GROUPEDto toDo (T_GROUPE groupe);
+    @Mapping(source = "grp_id",target = "grp_id")
     T_GROUPE toEntity (T_GROUPEDto groupeDto);
 }

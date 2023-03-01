@@ -12,5 +12,6 @@ public interface T_SALLECONCERTMapper {
 
     @Mapping(source = "sac_id",target = "sac_id")
     T_SALLECONCERTDto toDo (T_SALLECONCERT salleconcert);
+    @Mapping(source = "sac_id",target = "sac_id")
     T_SALLECONCERT toEntity(T_SALLECONCERTDto salleconcertDto);
 }
