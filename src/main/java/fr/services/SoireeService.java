@@ -1,20 +1,19 @@
 package fr.services;
 
-import fr.dtos.T_CONCERTDto;
-import fr.dtos.T_SOIREEDto;
+import fr.dtos.SoireeDto;
 
 import java.util.List;
 
-public interface T_SOIREEService {
+public interface SoireeService {
     /**
      * Sauve a soiree
      */
-    T_SOIREEDto saveSoiree (T_SOIREEDto tSoireeDto);
+    SoireeDto saveSoiree (SoireeDto tSoireeDto);
 
     /**
      * Get a soiree by it's id
      */
-    T_SOIREEDto getSoireeById(Integer SoireeId);
+    SoireeDto getSoireeById(Integer SoireeId);
 
     /**
      * Delete a soiree by it's id
@@ -24,5 +23,5 @@ public interface T_SOIREEService {
     /**
      * Get all the soirees
      */
-    List<T_SOIREEDto> getAllSoirees();
+    List<SoireeDto> getAllSoirees();
 }

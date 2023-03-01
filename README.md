@@ -55,7 +55,7 @@ data :
         "heure": "22:30:00",
         "duree": "01:00:00",
         "groupe": {
-            "grp_id": 1,
+            "grpid": 1,
             "grp_nom": "Les Beatles",
             "prenom": "John",
             "pseudo": "Lennon",

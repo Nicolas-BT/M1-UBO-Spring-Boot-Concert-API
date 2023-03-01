@@ -1,8 +1,7 @@
 package fr.controllers;
 
-import fr.dtos.T_CONCERTDto;
-import fr.dtos.T_GROUPEDto;
-import fr.services.impl.T_GROUPEServiceImpl;
+import fr.dtos.GroupeDto;
+import fr.services.impl.GroupeServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,9 +9,9 @@ import java.util.List;
 @RequestMapping("/tgroupes")
 public class T_GROUPEController {
 
-    private final T_GROUPEServiceImpl tGroupeService;
+    private final GroupeServiceImpl tGroupeService;
 
-    public T_GROUPEController(T_GROUPEServiceImpl tGroupeService) {
+    public T_GROUPEController(GroupeServiceImpl tGroupeService) {
         this.tGroupeService = tGroupeService;
     }
 
@@ -21,7 +20,7 @@ public class T_GROUPEController {
      * @return List<T_GROUPEDto>
      */
     @GetMapping
-    public List<T_GROUPEDto> getgroupes() {
+    public List<GroupeDto> getgroupes() {
         return tGroupeService.getAllGroupes();
     }
 
@@ -29,7 +28,7 @@ public class T_GROUPEController {
      * Method to get the t_groupe based on the ID
      */
     @GetMapping("/{id}")
-    public T_GROUPEDto getgroupe(@PathVariable Integer id){
+    public GroupeDto getgroupe(@PathVariable Integer id){
         return tGroupeService.getGroupeById(id) ;
     }
 
@@ -37,7 +36,7 @@ public class T_GROUPEController {
      * Create a new t_groupe in the system
      */
     @PostMapping
-    public T_GROUPEDto savegroupe(final @RequestBody T_GROUPEDto tGroupeDto){
+    public GroupeDto savegroupe(final @RequestBody GroupeDto tGroupeDto){
         return tGroupeService.savegroupe(tGroupeDto);
     }
 

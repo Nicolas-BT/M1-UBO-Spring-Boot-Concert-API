@@ -1,8 +1,7 @@
 package fr.controllers;
 
-import fr.dtos.DogDto;
-import fr.dtos.T_CONCERTDto;
-import fr.services.impl.T_CONCERTServiceImpl;
+import fr.dtos.ConcertDto;
+import fr.services.impl.ConcertServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,9 +10,9 @@ import java.util.List;
 @RequestMapping("/tconcerts")
 public class T_CONCERTController {
 
-    private final T_CONCERTServiceImpl tConcertService;
+    private final ConcertServiceImpl tConcertService;
 
-    public T_CONCERTController(T_CONCERTServiceImpl tConcertService) {
+    public T_CONCERTController(ConcertServiceImpl tConcertService) {
         this.tConcertService = tConcertService;
     }
 
@@ -22,7 +21,7 @@ public class T_CONCERTController {
      * @return List<T_CONCERTDto>
      */
     @GetMapping
-    public List<T_CONCERTDto> getconcerts() {
+    public List<ConcertDto> getconcerts() {
         return tConcertService.getAllConcerts();
     }
 
@@ -30,7 +29,7 @@ public class T_CONCERTController {
      * Method to get the t_concert based on the ID
      */
     @GetMapping("/{id}")
-    public T_CONCERTDto getconcert(@PathVariable Integer id){
+    public ConcertDto getconcert(@PathVariable Integer id){
         return tConcertService.getConcertById(id) ;
     }
 
@@ -38,7 +37,7 @@ public class T_CONCERTController {
      * Create a new t_concert in the system
      */
     @PostMapping
-    public T_CONCERTDto saveconcert(final @RequestBody T_CONCERTDto tConcertDto){
+    public ConcertDto saveconcert(final @RequestBody ConcertDto tConcertDto){
         return tConcertService.saveConcert(tConcertDto);
     }
 
