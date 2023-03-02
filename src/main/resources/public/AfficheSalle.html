@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Affiche Salle</title>
+  <!--<link rel="stylesheet" href="css.css" type="text/css">-->
+</head>
+<body>
+<main id="app">
+  <nav>
+    <a href="welcome.html">Accueil</a>
+    <br />
+    <a href="AjoutSalle.html">Ajout salle</a>
+  </nav>
+  <h1>Acces aux salle de Spring avec Vue</h1>
+  <p>Code écrit par {{ auteur }}.</p>
+  <p>Il y a {{ nbSalles }} Salles dans la base.</p>
+  <div v-for="sp in Salles" :key="sp._id">
+    <h3>{{sp.nom }}</h3>
+    <p> ce trouve à {{sp.adresse}}</p>
+    <p> le gestionnaire est {{sp.ges_nom}}  de {{sp.ges_association}} </p>
+    <div v-for="so in Soirees" :key="so._id">
+      <div v-if="so.salleconcert.sac_id === sp.sac_id">
+        <h2 style="color:red;"> soiree : {{so.nom}}</h2>
+        <div v-for="co in Concerts" :key="co._id">
+          <div v-if="co.soiree.soi_id === so.soi_id">
+            <a :href="'Affiche1Concert.html?id='+co.conId"><h3 >{{co.nom }}</h3></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p><br /></p>
+</main>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+  const Salles = {
+    data() {
+      return {
+        auteur: "Mona Bideau",
+        Salles: [],
+        Soirees: [],
+        Concerts:[],
+      }
+    },
+    created()  {
+      fetch('http://localhost:8081/tsalleconcert')
+              .then((response) => response.json())
+              .then((json) => {this.Salles = json});
+      fetch('http://localhost:8081/tsoiree')
+              .then((response) => response.json())
+              .then((json) => {this.Soirees = json});
+      fetch('http://localhost:8081/tconcerts')
+              .then((response) => response.json())
+              .then((json) => {this.Concerts = json});
+    },
+    computed: {
+      nbSalles() {
+        return this.Salles.length
+      }
+    }
+  }
+  const app = Vue.createApp(Salles).mount('#app')
+</script>
+</body>
+</html>

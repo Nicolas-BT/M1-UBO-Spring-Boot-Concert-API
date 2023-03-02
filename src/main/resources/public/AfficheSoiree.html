@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main id="app">
+    <nav>
+        <a href="welcome.html">Accueil</a>
+        <br />
+        <a href="AjoutSoiree.html">Ajout Soiree</a>
+    </nav>
+    <h1>Acces aux salle de Spring avec Vue</h1>
+    <p>Code écrit par {{ auteur }}.</p>
+    <p>Il y a {{ nbsoirees }} soirees dans la base.</p>
+    <div v-for="sp in soirees" :key="sp._id">
+        <h3>{{sp.nom }}</h3>
+        <p> se trouve dans la salle de concert {{sp.salleconcert.nom}}</p>
+    </div>
+    <p><br /></p>
+</main>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const soirees = {
+        data() {
+            return {
+                auteur: "Mona Bideau",
+                soirees: [],
+
+            }
+        },
+        created()  {
+            fetch('http://localhost:8081/tsoiree')
+                .then((response) => response.json())
+                .then((json) => {this.soirees = json});
+
+        },
+        computed: {
+            nbsoirees() {
+                return this.soirees.length
+            }
+        }
+    }
+    const app = Vue.createApp(soirees).mount('#app')
+</script>
+</body>
+</html>

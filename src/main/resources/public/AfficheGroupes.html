@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Affiche Groupe</title>
+  <!--<link rel="stylesheet" href="css.css" type="text/css">-->
+</head>
+<body>
+<main id="app">
+  <nav>
+    <a href="welcome.html">Accueil</a>
+    <br />
+    <a href="AjoutGroupe.html">Ajout Groupes</a>
+  </nav>
+  <h1>Acces aux groupe de Spring avec Vue</h1>
+  <p>Code écrit par {{ auteur }}.</p>
+  <p>Il y a {{ nbgroupes }} groupes dans la base.</p>
+  <div v-for="sp in groupes" :key="sp._id">
+    <h3>{{sp.grp_nom }}</h3>
+    <p> le membre leader est {{sp.prenom}} {{sp.pseudo}} et sont age est {{sp.age}}</p>
+    <p> il a {{sp.nb}} membres</p>
+    <p>viens de  {{ sp.ville }}</p>
+  </div>
+  <p><br /></p>
+</main>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+  const groupes = {
+    data() {
+      return {
+        auteur: "Mona Bideau",
+        groupes: []
+      }
+    },
+    created()  {
+      fetch('http://localhost:8081/tgroupes')
+              .then((response) => response.json())
+              .then((json) => {this.groupes = json});
+    },
+    computed: {
+      nbgroupes() {
+        return this.groupes.length
+      }
+    }
+  }
+  const app = Vue.createApp(groupes).mount('#app')
+</script>
+</body>
+</html>
