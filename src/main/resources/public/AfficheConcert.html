@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main id="app">
+    <nav>
+        <a href="welcome.html">Accueil</a>
+        <br />
+        <a href="AjoutConcert.html">Ajout Concert</a>
+    </nav>
+    <h1>Acces aux salle de Spring avec Vue</h1>
+    <p>Code écrit par {{ auteur }}.</p>
+    <p>Il y a {{ nbconcerts }} concerts dans la base.</p>
+    <div v-for="sp in concerts" :key="sp._id">
+        <a :href="'Affiche1Concert.html?id='+sp.conId"><h3 >{{sp.nom }}</h3></a>
+        <p>le concert ce passe le {{sp.date}} à {{sp.heure}}</p>
+        <p> il dure {{sp.duree}}</p>
+        <p> le groupe est  {{sp.groupe.grp_nom}}</p>
+        <p> ce trouve dans la soiree {{sp.soiree.nom}}</p>
+    </div>
+    <p><br /></p>
+</main>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const concerts = {
+        data() {
+            return {
+                auteur: "Mona Bideau",
+                concerts: []
+            }
+        },
+        created()  {
+            fetch('http://localhost:8081/tconcerts')
+                .then((response) => response.json())
+                .then((json) => {this.concerts = json});
+        },
+        computed: {
+            nbconcerts() {
+                return this.concerts.length
+            }
+        }
+    }
+    const app = Vue.createApp(concerts).mount('#app')
+</script>
+</body>
+</html>

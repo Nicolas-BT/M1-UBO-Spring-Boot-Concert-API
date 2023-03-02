@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<main id="app">
+  <nav>
+    <a href="welcome.html">Accueil</a>
+    <br />
+    <a href="AfficheConcert.html">afficher tous les concerts</a>
+    <br />
+    <a href="AfficheSalle.html">afficher tous les salles</a>
+
+  </nav>
+  <h1>Acces aux salle de Spring avec Vue</h1>
+  <p>Code écrit par {{ auteur }}.</p>
+  <h3>{{concerts.nom }}</h3>
+  <p>le concert ce passe le {{concerts.date}} à {{concerts.heure}}</p>
+  <p> il dure {{concerts.duree}}</p>
+  <p> le groupe est  {{concerts.groupe.grp_nom}}</p>
+  <p> ce trouve dans la soiree {{concerts.soiree.nom}}</p>
+  </div>
+  <p><br /></p>
+</main>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+  const concerts = {
+    data() {
+      return {
+        auteur: "Mona Bideau",
+        concerts: []
+      }
+    },
+    created()  {
+      let url = window.location.search.substring(1);
+      let params = new URLSearchParams(url);
+      fetch('http://localhost:8081/tconcerts/'+params.get('id'))
+      //fetch('http://localhost:8081/tconcerts/1')
+              .then((response) => response.json())
+              .then((json) => {this.concerts = json});
+    },
+    computed: {
+      nbconcerts() {
+        return this.concerts.length
+      }
+    }
+  }
+  const app = Vue.createApp(concerts).mount('#app')
+</script>
+</body>
+</html>

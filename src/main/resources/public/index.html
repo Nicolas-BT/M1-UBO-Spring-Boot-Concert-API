@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SiteWeb</title>
+</head>
+<body>
+<div id="app">
+<h1>hello</h1>
+</div>
+<script id="home">
+  const groupes = {
+    data() {
+      return {
+        auteur: "Mona Bideau",
+        groupes: []
+      }
+    },
+    created()  {
+      fetch('http://localhost:8081/tgroupes')
+              .then((response) => response.json())
+              .then((json) => {this.groupes = json});
+    },
+    computed: {
+      nbgroupes() {
+        return this.groupes.length
+      }
+    }
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+    const app =  new Vue({
+    el: '#app'
+})</script>
+
+</body>
+
+
+</html>
