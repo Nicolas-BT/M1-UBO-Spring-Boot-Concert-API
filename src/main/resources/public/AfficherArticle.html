@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>Affiche Groupe</title>
+    <!--<link rel="stylesheet" href="css.css" type="text/css">-->
 </head>
 <body>
-
+<main id="app">
+    <nav>
+        <a href="welcome.html">Accueil</a>
+        <br />
+    </nav>
+    <h1>Acces aux Articles de Spring mongoDB avec Vue</h1>
+    <p>Code écrit par {{ auteur }}.</p>
+    <p>Il y a {{ nbArticles }} Articles dans la base.</p>
+    <div v-for="sp in Articles" :key="sp._id">
+        <a :href="'Affiche1Article.html?id='+sp.id"><h3 >{{sp.nom }}</h3></a>
+    </div>
+    <p><br /></p>
+</main>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const Articles = {
+        data() {
+            return {
+                auteur: "Mona Bideau,Pierre André Beaufort, Nicolas Bernicot.",
+                Articles: []
+            }
+        },
+        created()  {
+            fetch('http://localhost:8081/Articles')
+                .then((response) => response.json())
+                .then((json) => {this.Articles = json});
+        },
+        computed: {
+            nbArticles() {
+                return this.Articles.length
+            }
+        }
+    }
+    const app = Vue.createApp(Articles).mount('#app')
+</script>
 </body>
 </html>

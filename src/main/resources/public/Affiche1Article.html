@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>Affiche Groupe</title>
+  <!--<link rel="stylesheet" href="css.css" type="text/css">-->
+</head>
+<body>
+<main id="app">
+  <nav>
+    <a href="welcome.html">Accueil</a>
+    <br />
+  </nav>
+  <h1>Acces aux 1 Article de Spring MongoDB avec Vue</h1>
+  <p>Code écrit par {{ auteur }}.</p>
+    <h3 >{{Articles.nom }}</h3>
+  <p> lien : {{Articles.url}}</p>
+  <p> nom parlons de {{Articles.entite_type}}</p>
+  <div v-if="Articles.entite_type === 'Groupe'">
+      <p>{{Articles.text}}</p>
+  </div>
+  <div v-if="Articles.entite_type === 'Concert'">
+    <p>{{Articles.text}}</p>
+  </div>
+
+  <p> cette article à été écrit par {{Articles.auteur}} le {{Articles.date}}</p>
+  <p><br /></p>
+</main>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+  const Articles = {
+    data() {
+      return {
+        auteur: "Mona Bideau,Pierre André Beaufort, Nicolas Bernicot.",
+        Articles: [],
+        groupes:[],
+        Concerts: []
+      }
+    },
+    created()  {
+      fetch('http://localhost:8081/tgroupes')
+              .then((response) => response.json())
+              .then((json) => {this.groupes = json});
+      fetch('http://localhost:8081/tconcerts')
+              .then((response) => response.json())
+              .then((json) => {this.Concerts = json});
+      let url = window.location.search.substring(1);
+      let params = new URLSearchParams(url);
+      fetch('http://localhost:8081/Articles/'+params.get('id'))
+              .then((response) => response.json())
+              .then((json) => {this.Articles = json});
+    },
+    computed: {
+      nbArticles() {
+        return this.Articles.length
+      }
+    }
+  }
+  const app = Vue.createApp(Articles).mount('#app')
+</script>
+</body>
+</html>

@@ -5,6 +5,94 @@
     <title>Title</title>
 </head>
 <body>
+<main id="app">
+    <nav>
+        <a href="welcome.html">Accueil</a>
+        <br />
+    </nav>
+    <h1>Ajout de billet de Spring avec Vue</h1>
+    <p>Code écrit par {{ auteur }}.</p>
+    <div>
+        <h2>Ajouter un billet</h2>
+        <form @submit.prevent="addBillet">
+            <label for="concert">Concert:</label>
+            <select id="concert" v-model="newBillet.concert" required>
+                <option disabled value="">Sélectionner un concert</option>
+                <option v-for="co in concerts" :key="co._id" :value="co">{{ co.nom }}</option>
 
+            </select>
+            <br />
+            <label for="nbClones">Nombre de Billet:</label>
+            <input type="number" id="nbClones" v-model.number="nbClones" min="1" max="10" required>
+            <br />
+            <button type="submit">Ajouter</button>
+        </form>
+    </div>
+    <p>Il y a {{ nbBillet }} billets dans la base.</p>
+    <div v-for="billet in Billets" :key="billet._id">
+        <p>{{ billet }}</p>
+        <p>{{ billet.id }}</p>
+        <p>{{ billet.concert.nom }}</p>
+    </div>
+</main>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+    const Billets = {
+        data() {
+            return {
+                auteur: " Mona Bideau,Pierre André Beaufort, Nicolas Bernicot.",
+                Billets: [],
+                newBillet: {
+                    concert: null,
+                },
+                concerts: [],
+                nbClones: 1,
+            }
+        },
+        methods: {
+            async addBillet() {
+                for (let i = 0; i < this.nbClones; i++) {
+                    const response = await fetch('http://localhost:8081/billets', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(this.newBillet),
+                    });
+                    const data = await response.json();
+                    console.log(data);
+                }
+                // clear the form inputs
+                this.newBillet.concert = null;
+                // refresh the list of billets
+                this.getBillets();
+            },
+            async getBillets() {
+                const response = await fetch('http://localhost:8081/billets');
+                const data = await response.json();
+                this.Billets = data;
+            },
+            async creat() {
+                await this.getBillets();
+                await this.getConcerts();
+            },
+            async getConcerts() {
+                const response = await fetch('http://localhost:8081/tconcerts');
+                const data = await response.json();
+                this.concerts = data;
+            }
+        },
+        computed: {
+            nbBillet() {
+                return this.Billets.length;
+            },
+        },
+        created() {
+            this.creat();
+        },
+    };
+
+    const app = Vue.createApp(Billets).mount('#app');
+</script>
 </body>
 </html>
+
+

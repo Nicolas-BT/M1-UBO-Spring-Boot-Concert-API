@@ -11,7 +11,7 @@
         <br />
         <a href="AjoutSoiree.html">Ajout Soiree</a>
     </nav>
-    <h1>Acces aux salle de Spring avec Vue</h1>
+    <h1>Acces aux Soiree de Spring avec Vue</h1>
     <p>Code écrit par {{ auteur }}.</p>
     <p>Il y a {{ nbsoirees }} soirees dans la base.</p>
     <div v-for="sp in soirees" :key="sp._id">
@@ -25,7 +25,7 @@
     const soirees = {
         data() {
             return {
-                auteur: "Mona Bideau",
+                auteur: "Mona Bideau,Pierre André Beaufort, Nicolas Bernicot.",
                 soirees: [],
 
             }

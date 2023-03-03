@@ -10,8 +10,11 @@ public class Article {
 
     private String id;
     private String auteur;
+    private String nom;
     private long date;
     private String url;
+
+    private String text;
     private int entite_id;
     private String entite_type;
 
@@ -61,5 +64,21 @@ public class Article {
 
     public void setEntite_type(String entite_type) {
         this.entite_type = entite_type;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 }
