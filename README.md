@@ -28,9 +28,9 @@ spring.datasource.password=
 Il suffit de lancer l'application **App**
 
 ### Erreur possible lors du premier lancement 
-Il est possible que lors du premier lancement des erreurs s'affiche, cela peux etre 2 erreurs:
--la première : vous n'avez pas modifier application.properties ( et le serveur n'arrive pas à ce connecter)
--la deuxième : changer le jdk en jdk 16
+Il est possible que lors du premier lancement des erreurs s'affiche, cela peux etre 2 erreurs: 
+- la première : vous n'avez pas modifier application.properties ( et le serveur n'arrive pas à ce connecter) 
+- la deuxième : changer le jdk en jdk 16
  
 
 Ensuite, vous pouvez utiliser Postman afin de faire les commandes GET / POST / DELETE en localhost sur le port 8081
