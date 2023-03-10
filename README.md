@@ -30,23 +30,24 @@ Il suffit de lancer l'application **App**
 ### Erreur possible lors du premier lancement 
 Il est possible que lors du premier lancement des erreurs s'affiche, cela peux etre 2 erreurs:
 -la première : vous n'avez pas modifier application.properties ( et le serveur n'arrive pas à ce connecter)
+-la deuxième : changer le jdk en jdk 16
  
 
-Ensuite, vous pouvez utiliser Postman afin de faire les commandes GET / POST / DELETE en localhost sur le port 8080
+Ensuite, vous pouvez utiliser Postman afin de faire les commandes GET / POST / DELETE en localhost sur le port 8081
 Exemples de GET :
 
 
-[GET] - URL : http://localhost:8080/tconcerts
+[GET] - URL : http://localhost:8081/tconcerts
 
 > Renvoie tout les concerts
 
-[GET] - URL : http://localhost:8080/tconcerts/1
+[GET] - URL : http://localhost:8081/tconcerts/1
 
 > Renvoie le concert de l'id 1
 
 Exemple de POST :
 
-[POST] - URL : http://localhost:8080/tconcerts
+[POST] - URL : http://localhost:8081/tconcerts
 ```
 data :
     {
@@ -81,6 +82,6 @@ data :
 
 Exemple de DELETE :
 
-[DELETE] - URL : http://localhost:8080/tconcerts/5
+[DELETE] - URL : http://localhost:8081/tconcerts/5
 
 > Renvoie "True" à bien été supprimé, sinon une erreur
